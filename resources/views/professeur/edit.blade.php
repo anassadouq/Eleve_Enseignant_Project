@@ -2,17 +2,13 @@
 
 @section('content')
 
-    <div class="container mt-5">        
+    <div class="container mt-5">
         <form  action="{{ route('professeur.update', $absence->id) }}" method="POST">
             @csrf
             @method('PUT')
             <div class="mb-3">
                 <label for="date" class="form-label">Date</label>
                 <input type="date" name="date" value="{{ $absence->date }}" class="form-control">
-            </div>
-            <div class="mb-3">
-                <label for="matiere" class="form-label">Matière</label>
-                <input type="text" name="matiere" value="{{ $absence->matiere }}" class="form-control">
             </div>
             <div class="mb-3">
                 <label for="presence" class="form-label">Présence</label><br>

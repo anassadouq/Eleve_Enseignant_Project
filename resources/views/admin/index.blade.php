@@ -6,37 +6,39 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
     </head>
     <body>
-        <div class="mx-2">
-            <a href="{{ route('professeur.create') }}" class="btn btn-primary mb-3">La présence</a>
-            <table width="100%" class="text-center" id="myTable">
-                <thead>
-                    <tr>
-                        <th>Nom</th>
-                        <th>Email</th>
-                        <th>Role</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($admins as $admin)
-                        @if($admin->role == "student" || $admin->role == "professeur")
-                            <tr>
-                                <td>{{ $admin->name }}</td>
-                                <td><a href="mailto:{{ $admin->email }}">{{ $admin->email }}</a></td>
-                                <td>{{ $admin->role }}</td>
-                                <td>
-                                    <form action="{{ route('admin.destroy', $admin) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <a href="{{ route('admin.edit', $admin) }}" class="btn btn-secondary">Update</a>
-                                        <button type="submit" class="btn btn-danger">Delete</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        @endif
-                    @endforeach
-                </tbody>
-            </table>  
+        <div class="container my-5">
+            <div class="shadow p-4 mb-5 bg-white rounded" style="background-color: #f0f8ff; border: 1px solid #b0c4de;">
+                <h2 class="text-center mb-4" style="color: #4682b4;">Professors and Students</h2>
+                <table width="100%" class="table table-bordered table-striped text-center" id="myTable" style="border: 1px solid #b0c4de;">
+                    <thead style="background-color: #4682b4; color: white;">
+                        <tr>
+                            <th>Nom</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($admins as $admin)
+                            @if($admin->role == "student" || $admin->role == "professeur")
+                                <tr style="background-color: #e6f2ff;">
+                                    <td>{{ $admin->name }}</td>
+                                    <td><a href="mailto:{{ $admin->email }}" style="color: #4682b4;">{{ $admin->email }}</a></td>
+                                    <td>{{ $admin->role }}</td>
+                                    <td>
+                                        <form action="{{ route('admin.destroy', $admin) }}" method="POST" style="display: inline-block;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <a href="{{ route('admin.edit', $admin) }}" class="btn btn-sm btn-secondary">Update</a>
+                                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endif
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>

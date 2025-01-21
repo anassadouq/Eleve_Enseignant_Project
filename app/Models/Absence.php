@@ -12,8 +12,9 @@ class Absence extends Model
     protected $fillable = [
         'id_user',
         'date',
+        'matiere',
         'presence',
-        'justif'
+        'justif',
     ];
 
     public function user()

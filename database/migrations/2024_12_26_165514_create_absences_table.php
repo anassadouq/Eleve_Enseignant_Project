@@ -13,6 +13,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_user');
             $table->foreign('id_user')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->date('date');
+            $table->string('matiere');
             $table->string('presence');
             $table->string("justif")->nullable();
             $table->timestamps();

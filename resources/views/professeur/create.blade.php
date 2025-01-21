@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <html lang="en">
 <head>
@@ -20,16 +19,19 @@
             <option value="">Toutes les classes</option>
             @foreach ($classes as $classe)
                 <option value="{{ $classe->id }}" {{ request('classe_id') == $classe->id ? 'selected' : '' }}>
-                    Classe num {{ $classe->id }}
+                 la classe:   {{ $classe->name }}
                 </option>
             @endforeach
         </select>
         <button type="submit" class="btn btn-primary mt-2">Filtrer</button>
     </form>
 
+
+
     <form action="{{ route('professeur.store') }}" method="POST" class="mx-3">
         @csrf
         <label>Date: <input type="date" name="date" required></label>
+        <label>matiere: <input type="text" name="matiere" required></label>
 
         <h2>Présences des Étudiants</h2>
         <ul>
